@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"eva/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -124,6 +126,9 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		// include eva variables
+		Eva android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -287,6 +292,9 @@ type productVariables struct {
 	ProductHiddenAPIStubsTest   []string `json:",omitempty"`
 
 	TargetFSConfigGen []string `json:",omitempty"`
+
+	// include eva variables
+	Eva android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
