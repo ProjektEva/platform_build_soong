@@ -125,6 +125,7 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 var BannerVars = []string{
 	"PLATFORM_VERSION_CODENAME",
 	"PLATFORM_VERSION",
+	"EVA_VERSION",
 	"TARGET_PRODUCT",
 	"TARGET_BUILD_VARIANT",
 	"TARGET_BUILD_TYPE",
@@ -221,7 +222,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 	env := config.Environment()
 	// Print the banner like make does
 	if !env.IsEnvTrue("ANDROID_QUIET_BUILD") {
-		ctx.Writer.Print(Banner(make_vars))
+		fmt.Fprintln(ctx.Writer, Banner(make_vars))
 	}
 
 	// Populate the environment
